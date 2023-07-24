@@ -81,6 +81,7 @@ int            dsurfedges[MAX_MAP_SURFEDGES];
 
 
 extern qboolean makelit;
+extern qboolean makeent;
 
 /* ========================================================================= */
 
@@ -542,6 +543,22 @@ void MakeDPLITFile (char *bspname)
 	fclose (litfile);
 }
 
+void WriteENTfile(char * bspname)
+{
+	char entname[1024];
+	FILE *entfile;
+	litheader_t litheader;
+
+	if (!makeent)
+		return;
+
+	strcpy (entname, bspname);
+	StripExtension (entname);
+	DefaultExtension (entname, ".ent");
+	entfile = fopen (entname, "wb");
+	fwrite(dentdata, 1, entdatasize - 1, entfile);
+	fclose (entfile);
+}
 
 /*
  * =============
@@ -551,7 +568,11 @@ void MakeDPLITFile (char *bspname)
  */
 void WriteBSPFile (char *filename, int version)
 {
-	if (makelit)
+	if (makeent)
+	{
+		WriteENTfile(filename);
+	}
+	else if (makelit)
 		MakeDPLITFile (filename);
 	else
 	{

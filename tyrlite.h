@@ -97,6 +97,7 @@ extern qboolean colored;
 extern qboolean force;
 extern qboolean nominlimit;
 extern qboolean makelit;
+extern qboolean makeent;
 //++ [js] new feature 
 extern qboolean external;
 extern qboolean nodefault;

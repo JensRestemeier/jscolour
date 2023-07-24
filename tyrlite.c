@@ -58,6 +58,7 @@ qboolean colored;
 qboolean nominlimit;
 qboolean force;
 qboolean makelit;
+qboolean makeent;
 
 qboolean nolightface[MAX_MAP_FACES];
 vec3_t   faceoffset[MAX_MAP_FACES];
@@ -382,7 +383,7 @@ int main (int argc, char **argv)
 	makelit = false;
     external = false;       	            // [js] new feature
     nodefault = false;       	            // [js] new feature
-    
+    makeent = false;    
 
 
     for (i=1 ; i<argc ; i++) 
@@ -416,6 +417,11 @@ int main (int argc, char **argv)
 		{
 			makelit = true;
 			printf ("Making a LIT file\n");
+		}
+		else if (!strcmp (argv[i], "-ent"))
+		{
+			makeent = true;
+			printf ("Making an ENT file\n");
 		}
         //++ [js] new feature
 		else if (!strcmp (argv[i], "-external") && argc > i)

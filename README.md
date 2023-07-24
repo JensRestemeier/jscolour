@@ -88,6 +88,9 @@ but don't say I didn't warn you if you don't like what you see.
 Generate a LIT file.  Bear in mind the warning above.  The loss of accuracy will only
 occur in one or two places in one or two maps, so it's not really that big an issue.
 
+`-ent`
+Generate a ENT file.  Extract the entities section of the bsp with added _color values, 
+so you can re-inject it into a map file.
 
 Boring legal stuff
 ------------------
