@@ -336,6 +336,7 @@ int Q_strcasecmp (char *s1, char *s2)
     return Q_strncasecmp (s1, s2, 99999);
 }
 
+#ifndef WIN32
 char *strupr (char *start)
 {
     char *in;
@@ -347,6 +348,7 @@ char *strupr (char *start)
     }
     return start;
 }
+#endif
 
 char *strlower (char *start)
 {

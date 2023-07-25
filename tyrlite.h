@@ -34,6 +34,9 @@
 
 #define ON_EPSILON 0.1
 #define MAXLIGHTS  1024
+#ifdef WIN32
+#define PATH_MAX 1024
+#endif
 
 //++ [js] new feature
 #define MAX_PATH _MAX_PATH  

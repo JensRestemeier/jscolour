@@ -545,10 +545,21 @@ void WriteEntitiesToString (void)
             }
 			else 
 			{
-                sprintf (line, "\"%s\" \"%s\"\n", ep->key, ep->value);
-                strcat (end, line);
-                end += strlen(line);
+                if (strcmp(ep->key, "_color") != 0)
+                {
+                    sprintf(line, "\"%s\" \"%s\"\n", ep->key, ep->value);
+                    strcat(end, line);
+                    end += strlen(line);
+                }
             }
+        }
+
+        // if we have a light colour defined write it to the entity:
+        if (entities[i].lightcolour[0] != entities[i].lightcolour[1] || entities[i].lightcolour[0] != entities[i].lightcolour[2])
+        {
+            sprintf (line, "\"_color\" \"%i %i %i\"\n", entities[i].lightcolour[0], entities[i].lightcolour[1], entities[i].lightcolour[2]);
+            strcat (end, line);
+            end += strlen(line);
         }
 
         strcat (end,"}\n");
